@@ -181,75 +181,113 @@ module IMPORT
     
     # For each bill ...
     bills.each do |bill|
-    
-      # We set the URL to import from.
-      url = "https://bills-api.parliament.uk/api/v1/Bills/#{bill.bill_system_id}/Publications"
-    
-      # We get the JSON.
-      json = JSON.load( URI.open( url ) )
       
-      # For each publication item in the feed ...
-      json['publications'].each do |publication_item|
+      # ... we import its publications.
+      import_publications_for_bill( bill )
+    end
+  end
+  
+  # ## A method to import publications for a given bill.
+  def import_publications_for_bill( bill )
+    
+    # We set the URL to import from.
+    url = "https://bills-api.parliament.uk/api/v1/Bills/#{bill.bill_system_id}/Publications"
+  
+    # We get the JSON.
+    json = JSON.load( URI.open( url ) )
+    
+    # For each publication item in the feed ...
+    json['publications'].each do |publication_item|
+      
+      # ... we store the returned values.
+      publication_item_house_label = publication_item['house']
+      publication_item_bill_system_id = publication_item['id']
+      publication_item_title = publication_item['title']
+      publication_item_publication_type_id = publication_item['publicationType']['id']
+      publication_item_display_date = publication_item['displayDate']
+      
+      # We find the publication type.
+      publication_type = PublicationType.find_by_bill_system_id( publication_item_publication_type_id )
+      
+      # We find the House.
+      house = ParliamentaryHouse.find_by_short_label( publication_item_house_label )
+      
+      # We attempt to find the publication.
+      publication = Publication.find_by_bill_system_id( publication_item_bill_system_id )
+      
+      # If we don't find the publication ...
+      unless publication
         
-        # ... we store the returned values.
-        publication_item_house_label = publication_item['house']
-        publication_item_bill_system_id = publication_item['id']
-        publication_item_title = publication_item['title']
-        publication_item_publication_type_id = publication_item['publicationType']['id']
-        publication_item_display_date = publication_item['displayDate']
+        # ... we create a new publication.
+        publication = Publication.new
+        publication.title = publication_item_title
+        publication.display_date = publication_item_display_date
+        publication.bill_system_id = publication_item_bill_system_id
+        publication.parliamentary_house = house if publication_item_house_label
+        publication.publication_type = publication_type
+        publication.bill = bill
+        publication.save
         
-        # We find the publication type.
-        publication_type = PublicationType.find_by_bill_system_id( publication_item_publication_type_id )
+        # For each link attached to a publication ...
+        publication_item['links'].each do |link_item|
         
-        # We find the House.
-        house = ParliamentaryHouse.find_by_short_label( publication_item_house_label )
-        
-        # We attempt to find the publication.
-        publication = Publication.find_by_bill_system_id( publication_item_bill_system_id )
-        
-        # If we don't find the publication ...
-        unless publication
+          # ... we store the returned values.
+          link_item_bill_system_id = link_item['id']
+          link_item_title = link_item['title']
+          link_item_url = link_item['url']
+          link_item_content_type = link_item['contentType']
           
-          # ... we create a new publication.
-          publication = Publication.new
-          publication.title = publication_item_title
-          publication.display_date = publication_item_display_date
-          publication.bill_system_id = publication_item_bill_system_id
-          publication.parliamentary_house = house if publication_item_house_label
-          publication.publication_type = publication_type
-          publication.bill = bill
-          publication.save
+          # We attempt to find the content type.
+          content_type = ContentType.find_by_content_type( link_item_content_type )
           
-          # For each link attached to a publication ...
-          publication_item['links'].each do |link_item|
-          
-            # ... we store the returned values.
-            link_item_bill_system_id = link_item['id']
-            link_item_title = link_item['title']
-            link_item_url = link_item['url']
-            link_item_content_type = link_item['contentType']
+          # If we don't find the content type ...
+          unless content_type
             
-            # We attempt to find the content type.
-            content_type = ContentType.find_by_content_type( link_item_content_type )
-            
-            # If we don't find the content type ...
-            unless content_type
-              
-              # ... we create a new content type.
-              content_type = ContentType.new
-              content_type.content_type = link_item_content_type
-              content_type.save
-            end
-          
-            # We create a new link.
-            link = Link.new
-            link.bill_system_id = link_item_bill_system_id
-            link.title = link_item_title
-            link.url = link_item_url
-            link.content_type = content_type
-            link.publication = publication
-            link.save
+            # ... we create a new content type.
+            content_type = ContentType.new
+            content_type.content_type = link_item_content_type
+            content_type.save
           end
+        
+          # We create a new link.
+          link = Link.new
+          link.bill_system_id = link_item_bill_system_id
+          link.title = link_item_title
+          link.url = link_item_url
+          link.content_type = content_type
+          link.publication = publication
+          link.save
+        end
+        
+        # For each file attached to a publication ...
+        publication_item['files'].each do |publication_file_item|
+          
+          # ... we store the returned values.
+          publication_file_item_bill_system_id = publication_file_item['id']
+          publication_file_item_filename = publication_file_item['filename']
+          publication_file_item_content_length = publication_file_item['contentLength']
+          publication_file_item_content_type = publication_file_item['contentType']
+          
+          # We attempt to find the content type.
+          content_type = ContentType.find_by_content_type( publication_file_item_content_type )
+          
+          # If we don't find the content type ...
+          unless content_type
+            
+            # ... we create a new content type.
+            content_type = ContentType.new
+            content_type.content_type = publication_file_item_content_type
+            content_type.save
+          end
+        
+          # We create a new publication file.
+          publication_file = PublicationFile.new
+          publication_file.bill_system_id = publication_file_item_bill_system_id
+          publication_file.filename = publication_file_item_filename
+          publication_file.content_length = publication_file_item_content_length
+          publication_file.content_type = content_type
+          publication_file.publication = publication
+          publication_file.save
         end
       end
     end
