@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   
+  get 'bill-papers' => 'home#index', :as => 'home'
   
   get 'bill-papers/bills' => 'bill#index', :as => 'bill_list'
   get 'bill-papers/bills/:bill' => 'bill#show', :as => 'bill_show'
@@ -16,4 +17,7 @@ Rails.application.routes.draw do
   
   get 'bill-papers/publication-types' => 'publication_type#index', :as => 'publication_type_list'
   get 'bill-papers/publication-types/:publication_type' => 'publication_type#show', :as => 'publication_type_show'
+  
+  get 'bill-papers/meta' => 'meta#index', :as => 'meta_list'
+  get 'bill-papers/meta/schema' => 'meta#schema', :as => 'meta_schema'
 end
