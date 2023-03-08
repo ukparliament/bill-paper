@@ -1,3 +1,4 @@
+drop table if exists publication_files;
 drop table if exists links;
 drop table if exists publications;
 drop table if exists bills;
@@ -99,3 +100,14 @@ create table links (
 	primary key (id)
 );
 
+create table publication_files (
+	id serial not null,
+	filename varchar(1000) not null,
+	bill_system_id int not null,
+	content_length int not null,
+	publication_id int not null,
+	content_type_id int not null,
+	constraint fk_publication foreign key (publication_id) references publications(id),
+	constraint fk_content_type foreign key (content_type_id) references content_types(id),
+	primary key (id)
+);
