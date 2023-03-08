@@ -6,5 +6,6 @@
 	<%= content_tag( 'p', "Published: #{publication.display_date}" ) %>
 	<ul>
 		<%= render :partial => 'link/link', :collection => publication.links %>
+		<%= render :partial => 'publication_file/publication_file', :collection => publication.publication_files %>
 	</ul>
 </li>
