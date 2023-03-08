@@ -1,0 +1,10 @@
+<li>
+	<%= content_tag( 'h3', publication.title ) %>
+	<%= content_tag( 'p', "Document type: #{link_to( publication.publication_type.label, publication_type_show_url( :publication_type => publication.publication_type.bill_system_id ) ) }".html_safe ) %>
+	<%= content_tag( 'p', "Bill: #{link_to( publication.bill.short_title, bill_show_url( :bill => publication.bill.bill_system_id ) )}".html_safe ) %>
+	<%= content_tag( 'p', publication.parliamentary_house.label ) if  publication.parliamentary_house %>
+	<%= content_tag( 'p', "Published: #{publication.display_date}" ) %>
+	<ul>
+		<%= render :partial => 'link/link', :collection => publication.links %>
+	</ul>
+</li>

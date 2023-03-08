@@ -1,0 +1,4 @@
+<%= content_tag( 'h2', 'Bill types' ) %>
+<ol>
+	<%= render :partial => 'bill_type/bill_type', :collection => @bill_category.bill_types %>
+</ol>

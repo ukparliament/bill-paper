@@ -1,0 +1,2 @@
+class ParliamentaryHouse < ApplicationRecord
+end

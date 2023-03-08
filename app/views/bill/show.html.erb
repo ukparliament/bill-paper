@@ -1,0 +1,49 @@
+<%= content_tag( 'p', link_to( 'Parliament bill page', "https://bills.parliament.uk/bills/#{@bill.bill_system_id}" ) ) %>
+
+<table>
+	<tbody>
+		<tr>
+			<%= content_tag( 'th', 'Bill type:' ) %>
+			<%= content_tag( 'td', link_to( @bill.bill_type.label, bill_type_show_url( :bill_type => @bill.bill_type.bill_system_id ) ) ) %>
+		</tr>
+		<% if @bill.originating_house -%>
+			<tr>
+				<%= content_tag( 'th', 'Originating House:' ) %>
+				<%= content_tag( 'td', @bill.originating_house.label ) %>
+			</tr>
+		<% end -%>
+		<% if @bill.current_house -%>
+			<tr>
+				<%= content_tag( 'th', 'Current House:' ) %>
+				<%= content_tag( 'td', @bill.current_house.label ) %>
+			</tr>
+		<% end -%>
+		<tr>
+			<%= content_tag( 'th', 'Originating session (bill system ID):' ) %>
+			<%= content_tag( 'td', @bill.originating_session.bill_system_id ) %>
+		</tr>
+		<tr>
+			<%= content_tag( 'th', 'Is Act:' ) %>
+			<%= content_tag( 'td', @bill.is_act ) %>
+		</tr>
+		<tr>
+			<%= content_tag( 'th', 'Is withdrawn:' ) %>
+			<%= content_tag( 'td', @bill.is_withdrawn ) %>
+		</tr>
+		<tr>
+			<%= content_tag( 'th', 'Is defeated:' ) %>
+			<%= content_tag( 'td', @bill.is_defeated ) %>
+		</tr>
+		<tr>
+			<%= content_tag( 'th', 'Updated:' ) %>
+			<%= content_tag( 'td', @bill.updated ) %>
+		</tr>
+	</tbody>
+</table>
+
+<% unless @bill.publications.empty? %>
+	<%= content_tag( 'h2', 'Publications' ) %>
+	<ol>
+		<%= render :partial => 'publication/publication', :collection => @bill.publications %>
+	</ol>
+<% end -%>

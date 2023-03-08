@@ -1,0 +1,8 @@
+<%= content_tag( 'p', @publication_type.description.html_safe ) if @publication_type.description %>
+
+<% unless @publication_type.publications.empty? %>
+	<%= content_tag( 'h2', 'Publications' ) %>
+	<ol>
+		<%= render :partial => 'publication/publication', :collection => @publication_type.publications %>
+	</ol>
+<% end -%>
