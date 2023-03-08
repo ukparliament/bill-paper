@@ -22,5 +22,9 @@
 			<%= content_tag( 'h1', @page_title || 'Bill papers' ) %>
 		</header>
 		<%= yield %>
+		<footer>
+			<p>Made available under the <a href='https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/' rel='licence'>Open Parliament Licence</a>.</p>
+			<%= content_tag( 'p', link_to( 'Meta', meta_list_url ) ) %>
+		</footer>
 	</body>
 </html>
