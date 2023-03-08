@@ -1,1 +1,1 @@
-<%= content_tag( 'li', "#{link_to( link.title, link.url )} #{link.content_type.content_type}".html_safe ) %>
+<%= content_tag( 'li', "#{link_to( link.title, link.url )} #{link.content_type.display_label}".html_safe ) %>
