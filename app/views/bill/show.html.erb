@@ -41,9 +41,9 @@
 	</tbody>
 </table>
 
-<% unless @bill.publications.empty? %>
-	<%= content_tag( 'h2', 'Publications' ) %>
+<% unless @bill.links.empty? %>
+	<%= content_tag( 'h2', 'Papers' ) %>
 	<ol>
-		<%= render :partial => 'publication/publication', :collection => @bill.publications %>
+		<%= render :partial => 'link/link', :collection => @bill.links %>
 	</ol>
 <% end -%>
