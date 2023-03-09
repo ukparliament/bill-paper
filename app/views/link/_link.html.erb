@@ -1,1 +1,6 @@
-<%= content_tag( 'li', "#{link_to( link.display_title, link.url )} #{link.content_type.display_label}".html_safe ) %>
+<li>
+	<%= content_tag( 'h3', "#{link_to( link.display_title, link.url )} #{link.content_type_display_label}".html_safe ) %>
+	<%= content_tag( 'p', "Bill: #{link_to( link.bill_short_title, bill_show_url( :bill => link.bill_bill_system_id ) ) }".html_safe ) %>
+	<%= content_tag( 'p', "Publication type: #{link_to( link.publication_type_label, publication_type_show_url( :publication_type => link.publication_type_bill_system_id))}".html_safe ) %>
+	<%= content_tag( 'p', "Published on: #{link.publication_display_date} as part of #{link.publication_title}" ) %>
+</li>
