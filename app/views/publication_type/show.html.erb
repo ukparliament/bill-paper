@@ -2,7 +2,7 @@
 
 <% unless @publication_type.links.empty? %>
 	<%= content_tag( 'h2', 'Papers' ) %>
-	<% content_tag( 'p', link_to( 'RSS', publication_type_show_url( :publication_type => @publication_type.bill_system_id, :format => 'rss' ) ) ) %>
+	<%= content_tag( 'p', link_to( 'RSS', publication_type_show_url( :publication_type => @publication_type.bill_system_id, :format => 'rss' ) ) ) %>
 	<ol>
 		<%= render :partial => 'link/link', :collection => @publication_type.links %>
 	</ol>
