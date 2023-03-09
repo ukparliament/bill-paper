@@ -18,11 +18,11 @@ class Link < ApplicationRecord
     case self.content_type_content_type
       when 'application/pdf'
         display_label = 'PDF'
-      when 'text/html' || 'application/xhtml+xml'
+      when 'text/html', 'application/xhtml+xml'
         display_label = 'HTML'
       when 'application/octet-stream'
         display_label = 'Binary'
-      when 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || 'application/msword'
+      when 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'
         display_label = 'MS Word'
       when 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         display_label = 'MS Excel'
