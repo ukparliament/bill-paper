@@ -8,8 +8,8 @@ class Link < ApplicationRecord
   end
   
   def description
-    description = "#{self.publication.publication_type.label} - for the #{self.publication.bill.short_title} published on #{self.publication.display_date}"
-    description += " #{self.content_type.display_label}"
+    description = "#{self.publication_type_label} - for the #{self.bill_short_title} published on #{self.publication_display_date}"
+    description += " #{self.content_type_display_label}"
     description
   end
   
