@@ -1,2 +1,0 @@
-xml << render( :partial => 'link/link', :collection => publication.links ) unless publication.links.empty?
-xml << render( :partial => 'publication_file/publication_file', :collection => publication.publication_files ) unless publication.publication_files.empty?
