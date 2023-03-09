@@ -221,8 +221,8 @@
             <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="35">title</tspan>
             <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="57">url</tspan>
             <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="79">content_length</tspan>
-            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="101">bill_system_id</tspan>
-            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="123">source</tspan>
+            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="101">source</tspan>
+            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="123">bill_system_id</tspan>
             <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="145">publication_id</tspan>
             <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="167">content_type_id</tspan>
           </text>
