@@ -255,6 +255,7 @@ module IMPORT
           link.title = link_item_title
           link.url = link_item_url
           link.content_type = content_type
+          link.source = 'link'
           link.publication = publication
           link.save
         end
@@ -281,13 +282,15 @@ module IMPORT
           end
         
           # We create a new publication file.
-          publication_file = PublicationFile.new
-          publication_file.bill_system_id = publication_file_item_bill_system_id
-          publication_file.filename = publication_file_item_filename
-          publication_file.content_length = publication_file_item_content_length
-          publication_file.content_type = content_type
-          publication_file.publication = publication
-          publication_file.save
+          link = Link.new
+          link.bill_system_id = publication_file_item_bill_system_id
+          link.title = publication_file_item_filename
+          link.url = "https://bills.parliament.uk/publications/#{publication_item_bill_system_id}/documents/#{publication_file_item_bill_system_id}"
+          link.content_length = publication_file_item_content_length
+          link.content_type = content_type
+          link.source = 'file'
+          link.publication = publication
+          link.save
         end
       end
     end
