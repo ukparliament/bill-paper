@@ -1,5 +1,51 @@
 # # A module for importing for the bill system API.
 module IMPORT
+  
+  # ## A method to import sessions.
+  def import_sessions
+    puts "importing sessions"
+    
+    # We set the URL to import from.
+    url = "https://whatson-api.parliament.uk/calendar/sessions/list.json"
+    
+    # We get the JSON.
+    json = JSON.load( URI.open( url ) )
+    
+    # For each session item in the feed ...
+    json.each do |session_item|
+      
+      # ... we store the returned values.
+      session_item_bill_system_id = session_item['SessionId']
+      session_item_number = session_item['Number']
+      session_item_start_on = session_item['StartDate']
+      session_item_end_on = session_item['EndDate']
+      session_item_commons_description = session_item['CommonsDescription']
+      session_item_lords_description = session_item['LordsDescription']
+      session_item_parliament_number = session_item['ParliamentNumber']
+      session_item_session_number = session_item['SessionNumber']
+      
+      # We attempt to find the session.
+      session = Session.find_by_bill_system_id( session_item_bill_system_id )
+      
+      # If we don't find the session ...
+      unless session
+        
+        # ... we create a new session.
+        session = Session.new
+        session.bill_system_id = session_item_bill_system_id
+      end
+    
+      # We update the current attributes for the session.
+      session.number = session_item_number
+      session.start_on = session_item_start_on
+      session.end_on = session_item_end_on
+      session.commons_description = session_item_commons_description
+      session.lords_description = session_item_lords_description
+      session.parliament_number = session_item_parliament_number
+      session.session_number = session_item_session_number
+      session.save
+    end
+  end
 
   # ## A method to import bill types.
   def import_bill_types
@@ -92,7 +138,7 @@ module IMPORT
   end
   
   # ## A method to import bills including a parameter for the number of records to skip.
-  def import_bills( skip )
+  def import_all_bills( skip )
     puts "importing bills"
     
     # We set the URL to import from.
@@ -104,61 +150,8 @@ module IMPORT
     # For each bill item in the feed ....
     json['items'].each do |bill_item|
       
-      # ... we store the returned values.
-      bill_item_bill_system_id = bill_item['billId']
-      bill_item_short_title = bill_item['shortTitle']
-      bill_item_originating_house = bill_item['originatingHouse']
-      bill_item_bill_type_id = bill_item['billTypeId']
-      bill_item_originating_session_id = bill_item['introducedSessionId']
-      bill_item_current_house = bill_item['currentHouse']
-      bill_item_is_act = bill_item['isAct']
-      bill_item_is_withdrawn = bill_item['billWithdrawn']
-      bill_item_is_defeated = bill_item['isDefeated']
-      bill_item_updated = bill_item['lastUpdate']
-      
-      # We attempt to find the originating session.
-      session = Session.find_by_bill_system_id( bill_item_originating_session_id )
-      
-      # If we don't find the session ...
-      unless session
-        
-        # ... we create a new session
-        session = Session.new
-        session.bill_system_id = bill_item_originating_session_id
-        session.save
-      end
-      
-      # We attempt to find the originating House.
-      originating_house = ParliamentaryHouse.find_by_short_label( bill_item_originating_house )
-      
-      # We attempt to find the current House.
-      current_house = ParliamentaryHouse.find_by_short_label( bill_item_current_house ) unless bill_item_current_house == 'Unassigned'
-      
-      # We attempt to find the bill by its bill system ID.
-      bill = Bill.find_by_bill_system_id( bill_item_bill_system_id )
-      
-      # We attempt to find the bill type.
-      bill_type = BillType.find_by_bill_system_id( bill_item_bill_type_id )
-      
-      # If we don't find the bill ...
-      unless bill
-        
-        # ... we create a new bill.
-        bill = Bill.new
-        bill.bill_system_id = bill_item_bill_system_id
-        bill.short_title = bill_item_short_title
-        bill.originating_house_id = originating_house.id if originating_house
-        bill.bill_type = bill_type
-        bill.originating_session_id = session.id
-      end
-      
-      # We update the current attributes for the bill.
-      bill.current_house_id = current_house.id if current_house
-      bill.is_act = bill_item_is_act
-      bill.is_withdrawn = bill_item_is_withdrawn if bill_item_is_withdrawn
-      bill.is_defeated = bill_item_is_defeated
-      bill.updated = bill_item_updated
-      bill.save
+      # ... we import the bill if we've not seen it before.
+      import_bill( bill_item )
     end
     
     # We get the total results count from the API.
@@ -168,7 +161,42 @@ module IMPORT
     if total_results > skip
       
       # ... we call this method again, incrementing the skip by by 20 results.
-      import_bills( skip + 20 )
+      import_all_bills( skip + 20 )
+    end
+  end
+  
+  # ## A method to import bills from the current session including a parameter for the number of records to skip.
+  def import_bills_from_current_session( skip )
+    puts "importing bills from current session"
+    
+    # We get the current session.
+    current_session = Session
+      .order( 'parliament_number desc')
+      .order( 'session_number desc')
+      .first
+      
+    # We set the URL to import from.
+    # This returns bills from the current session that haven't been defeated or withdrawn.
+    url = "https://bills-api.parliament.uk/api/V1/Bills?session=#{current_session.bill_system_id}&isDefeated=false&isWithdrawn=false"
+      
+    # We get bills from the current session.
+    json = JSON.load( URI.open( url ) )
+    
+    # For each bill item in the feed ....
+    json['items'].each do |bill_item|
+      
+      # ... we import the bill if we've not seen it before.
+      import_bill( bill_item )
+    end
+    
+    # We get the total results count from the API.
+    total_results = json['totalResults']
+    
+    # If the total results count is greater than the number of results skipped ...
+    if total_results > skip
+      
+      # ... we call this method again, incrementing the skip by by 20 results.
+      import_bills_from_current_session( skip + 20 )
     end
   end
   
@@ -185,6 +213,79 @@ module IMPORT
       # ... we import its publications.
       import_publications_for_bill( bill )
     end
+  end
+  
+  # ## A method to import publications from bills in the current session.
+  def import_publications_from_current_session
+    puts "importing publications from bills in the current session"
+    
+    # We get the current session.
+    current_session = Session
+      .order( 'parliament_number desc')
+      .order( 'session_number desc')
+      .first
+      
+    # We get all bills from the current session.
+    bills = current_session.bills
+      
+    # For each bill ...
+    bills.each do |bill|
+      
+      # ... we import its publications.
+      import_publications_for_bill( bill )
+    end
+  end
+  
+  # ## A method to import a bill we've not seen before.
+  def import_bill( bill_item )
+    
+    # We store the returned values.
+    bill_item_bill_system_id = bill_item['billId']
+    bill_item_short_title = bill_item['shortTitle']
+    bill_item_originating_house = bill_item['originatingHouse']
+    bill_item_bill_type_id = bill_item['billTypeId']
+    bill_item_originating_session_id = bill_item['introducedSessionId']
+    bill_item_current_house = bill_item['currentHouse']
+    bill_item_is_act = bill_item['isAct']
+    bill_item_is_withdrawn = bill_item['billWithdrawn']
+    bill_item_is_defeated = bill_item['isDefeated']
+    bill_item_updated = bill_item['lastUpdate']
+    
+    # We attempt to find the originating session.
+    session = Session.find_by_bill_system_id( bill_item_originating_session_id )
+    
+    # We attempt to find the originating House.
+    originating_house = ParliamentaryHouse.find_by_short_label( bill_item_originating_house )
+    
+    # We attempt to find the current House.
+    current_house = ParliamentaryHouse.find_by_short_label( bill_item_current_house ) unless bill_item_current_house == 'Unassigned'
+    
+    # We attempt to find the bill by its bill system ID.
+    bill = Bill.find_by_bill_system_id( bill_item_bill_system_id )
+    
+    # We attempt to find the bill type.
+    bill_type = BillType.find_by_bill_system_id( bill_item_bill_type_id )
+    
+    # If we don't find the bill ...
+    unless bill
+      
+      # ... we create a new bill.
+      puts "Creating bill: #{bill_item_short_title} with ID #{bill_item_bill_system_id}"
+      bill = Bill.new
+      bill.bill_system_id = bill_item_bill_system_id
+      bill.short_title = bill_item_short_title
+      bill.originating_house_id = originating_house.id if originating_house
+      bill.bill_type = bill_type
+      bill.originating_session_id = session.id
+    end
+    
+    # We update the current attributes for the bill.
+    bill.current_house_id = current_house.id if current_house
+    bill.is_act = bill_item_is_act
+    bill.is_withdrawn = bill_item_is_withdrawn if bill_item_is_withdrawn
+    bill.is_defeated = bill_item_is_defeated
+    bill.updated = bill_item_updated
+    bill.save
   end
   
   # ## A method to import publications for a given bill.
