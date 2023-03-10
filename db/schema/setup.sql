@@ -40,6 +40,13 @@ create table bill_types (
 
 create table sessions (
 	id serial not null,
+	number varchar(255) not null,
+	start_on date not null,
+	end_on date not null,
+	commons_description varchar(255) not null,
+	lords_description varchar(255) not null,
+	parliament_number int not null,
+	session_number int not null,
 	bill_system_id int not null,
 	primary key (id)
 );
