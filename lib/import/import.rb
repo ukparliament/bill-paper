@@ -216,7 +216,7 @@ module IMPORT
   end
   
   # ## A method to import publications from bills in the current session.
-  def import_publications_from_current_session
+  def import_publications_from_bills_in_current_session
     puts "importing publications from bills in the current session"
     
     # We get the current session.
