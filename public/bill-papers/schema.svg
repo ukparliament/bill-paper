@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" viewBox="-321.5 278.5 1314 1193" width="1314" height="1193">
+<svg version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" viewBox="-321.5 151 1314 1320.5" width="1314" height="1320.5">
   <defs>
     <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="CrowBall_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -5 20 10" markerWidth="20" markerHeight="10" color="black">
       <g>
@@ -20,7 +20,7 @@
   </defs>
   <g id="Canvas_1" stroke-opacity="1" fill="none" stroke-dasharray="none" fill-opacity="1" stroke="none">
     <title>Canvas 1</title>
-    <rect fill="white" x="-321.5" y="278.5" width="1314" height="1193"/>
+    <rect fill="white" x="-321.5" y="151" width="1314" height="1320.5"/>
     <g id="Canvas_1_Layer_1">
       <title>Layer 1</title>
       <g id="Group_2">
@@ -107,16 +107,23 @@
         <title>Class with Attributes</title>
         <g id="Graphic_17">
           <title>Attributes</title>
-          <rect x="281" y="305.5" width="307" height="52" stroke="#b9c0c1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-          <text transform="translate(287 311.5)" fill="#515556">
+          <rect x="281" y="178" width="307" height="206" stroke="#b9c0c1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+          <text transform="translate(287 184)" fill="#515556">
             <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="13">id</tspan>
-            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="35">bill_system_id</tspan>
+            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="35">number</tspan>
+            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="57">start_on</tspan>
+            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="79">end_on</tspan>
+            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="101">commons_description</tspan>
+            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="123">lords_description</tspan>
+            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="145">parliament_number</tspan>
+            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="167">session_number</tspan>
+            <tspan font-family="Avenir" font-size="13" fill="#515556" x="0" y="189">bill_system_id</tspan>
           </text>
         </g>
         <g id="Graphic_16">
           <title>Class Name</title>
-          <rect x="281" y="279.5" width="307" height="26" stroke="#b9c0c1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-          <text transform="translate(287 283.5)" fill="#515556">
+          <rect x="281" y="152" width="307" height="26" stroke="#b9c0c1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+          <text transform="translate(287 156)" fill="#515556">
             <tspan font-family="Avenir" font-weight="bold" font-size="13" fill="#515556" x="122.839" y="13">sessions</tspan>
           </text>
         </g>
@@ -174,7 +181,7 @@
         <path d="M 5.988881 630.08885 C 50.574015 631.78066 100.81079 633 153 633 C 192.58885 633 228.97632 632.2984 261.5132 631.2211" marker-end="url(#CrowBall_Marker)" marker-start="url(#BarBall_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Line_26">
-        <line x1="434.5" y1="373" x2="434.5" y2="449.5" marker-end="url(#CrowBall_Marker)" marker-start="url(#DoubleBar_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <line x1="434.5" y1="399.5" x2="434.5" y2="449.5" marker-end="url(#CrowBall_Marker)" marker-start="url(#DoubleBar_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Line_27">
         <line x1="669" y1="620" x2="607.5" y2="620" marker-end="url(#CrowBall_Marker)" marker-start="url(#DoubleBar_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
