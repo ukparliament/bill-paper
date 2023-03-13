@@ -329,6 +329,9 @@ module IMPORT
         publication.bill = bill
         publication.save
         
+        # We log the import.
+        puts "Importing publication: #{publication_item_title}"
+        
         # For each link attached to a publication ...
         publication_item['links'].each do |link_item|
         
