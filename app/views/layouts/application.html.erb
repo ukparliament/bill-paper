@@ -3,14 +3,17 @@
 	<head>
 		<%= content_tag( 'title', @page_title || 'Bill papers' ) %>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<%= csrf_meta_tags %>
-		<%= csp_meta_tag %>
-		<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-		<%= javascript_importmap_tags %>
+		<style>
+			body {font-family: system-ui,sans-serif;padding:0.25rem 0.75rem;font-size:1.2rem;line-height:1.4;max-width:48rem;margin:0.5rem auto;}
+			cite {font-style: normal;}
+			h1, h2 {font-weight:normal;}
+			main {padding:2rem 0;}
+		</style>
 	</head>
 	<body>
 		<header>
-			<p>
+			<%= content_tag( 'p', link_to( 'Bill papers', home_url ), :class=> 'site-title' ) %>
+			<nav>
 				<%= link_to( 'Bill categories', bill_category_list_url ) %>
 				&middot;
   		  		<%= link_to( 'Bill types', bill_type_list_url ) %>
@@ -18,7 +21,7 @@
 				<%= link_to( 'Bills', bill_list_url )%>
 				&middot;
 				<%= link_to( 'Publication types', publication_type_list_url )%>
-			</p>
+			</nav>
 			<%= content_tag( 'h1', @page_title || 'Bill papers' ) %>
 		</header>
 		<%= yield %>
