@@ -15,6 +15,17 @@ class Bill < ApplicationRecord
     Session.find( self.originating_session_id )
   end
   
+  def originating_session_label
+    originating_session_label = "Parliament #{self.originating_session.parliament_number.to_s} - "
+    originating_session_label += "Session #{self.originating_session.session_number.to_s} "
+    # The Software Engineering sessions API has fields for both Commons and Lords descriptions.
+    # These are always the same.
+    # After checking with librarians, the two Houses never differ on session descriptions.
+    # So we just use the Commons one.
+    originating_session_label += "(#{self.originating_session.commons_description})"
+    originating_session_label
+  end
+  
   def links
     Link.find_by_sql(
       "
