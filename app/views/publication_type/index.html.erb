@@ -1,3 +1,4 @@
+<%= content_tag( 'p', "#{link_to( 'CSV', publication_type_list_url( :format => 'csv' ) )}".html_safe ) %>
 <ul>
 	<%= render :partial => 'publication_type', :collection => @publication_types %>
 </ul>
