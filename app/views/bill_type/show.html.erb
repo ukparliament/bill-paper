@@ -1,6 +1,6 @@
 <%= content_tag( 'p', @bill_type.description.html_safe ) %>
 
 <%= content_tag( 'h2', 'Bills' ) %>
-<ol>
+<ul>
 	<%= render :partial => 'bill/bill', :collection => @bill_type.bills %>
-</ol>
+</ul>
