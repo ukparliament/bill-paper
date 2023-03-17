@@ -1,0 +1,5 @@
+<p>Drag the bill flipper link to your bookmarks bar.</p>
+
+<p><a href="javascript:(function()%7B%0Avar%20url%20%3D%20document.URL%20%3B%0Aconst%20myUrl%20%3D%20new%20URL(url)%3B%0Aif%20(window.location.origin%20%3D%3D%20%27https%3A%2F%2Fbills.parliament.uk%27%20%26%26%20window.location.pathname.split(%27%2F%27).length%20%3D%3D%203)%0A%7Bwindow.location.href%20%3D%20%27https%3A%2F%2Fapi.parliament.uk%2Fbill-papers%2Fbills%2F%27%20%2B%20myUrl.pathname.split(%27%2F%27).reverse()%5B0%5D%7D%0Aelse%20if%20(window.location.origin%20%3D%3D%20%27https%3A%2F%2Fapi.parliament.uk%27%20%26%26%20window.location.pathname.split(%27%2F%27).length%20%3D%3D%204)%0A%7Bwindow.location.href%20%3D%20%27https%3A%2F%2Fbills.parliament.uk%2Fbills%2F%27%20%2B%20myUrl.pathname.split(%27%2F%27).reverse()%5B0%5D%7D%0Aelse%20%7Balert(%27Sorry.%20This%20URL%20is%20not%20flippable.%27)%7D%3B%7D)()%3B">Bill flipper</a>
+	
+<p>The bookmarklet flips between URLs like <a href="https://bills.parliament.uk/bills/3429">https://bills.parliament.uk/bills/3429</a> and <a href="https://api.parliament.uk/bill-papers/bills/3429">https://api.parliament.uk/bill-papers/bills/3429</a></p>
