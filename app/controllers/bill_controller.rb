@@ -1,7 +1,7 @@
 class BillController < ApplicationController
   
   def index
-    @bills = Bill.all
+    @bills = Bill.all.order( 'short_title' )
     @page_title = 'Bills'
   end
   
