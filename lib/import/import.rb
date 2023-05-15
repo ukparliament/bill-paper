@@ -177,7 +177,7 @@ module IMPORT
       
     # We set the URL to import from.
     # This returns bills from the current session that haven't been defeated or withdrawn.
-    url = "https://bills-api.parliament.uk/api/V1/Bills?session=#{current_session.bill_system_id}&isDefeated=false&isWithdrawn=false"
+    url = "https://bills-api.parliament.uk/api/V1/Bills?session=#{current_session.bill_system_id}&isDefeated=false&isWithdrawn=false&take=20&skip=#{skip}"
       
     # We get bills from the current session.
     json = JSON.load( URI.open( url ) )
