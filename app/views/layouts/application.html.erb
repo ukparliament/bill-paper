@@ -9,6 +9,14 @@
 			h1, h2 {font-weight:normal;}
 			main {padding:2rem 0;}
 		</style>
+	
+		<%# Add rel alternate links to RSS and CSV where applicable %>
+		<% if @rss_url -%>
+			<link rel="alternate" type="application/rss+xml" title="UK Parliament Bills - <%= @alternate_title %>" href="<%= @rss_url %>" />
+		<% end -%>
+		<% if @csv_url -%>
+			<link rel="alternate" type="text/csv" title="UK Parliament Bills - <%= @alternate_title %>" href="<%= @csv_url %>" />
+		<% end -%>
 	</head>
 	<body>
 		<header>
