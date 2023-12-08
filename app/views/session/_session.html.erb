@@ -1,0 +1,9 @@
+<tr>
+	<%= content_tag( 'td', session.parliament_number ) %>
+	<%= content_tag( 'td', link_to( session.session_number, session_show_url( :session => session.bill_system_id ) ) ) %>
+	<%= content_tag( 'td', session.start_on ) %>
+	<%= content_tag( 'td', session.end_on ) %>
+</tr>
+	
+	
+	
