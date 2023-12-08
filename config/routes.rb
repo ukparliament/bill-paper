@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   
   get 'bill-papers' => 'home#index', :as => 'home'
   
+  get 'bill-papers/sessions' => 'session#index', :as => 'session_list'
+  get 'bill-papers/sessions/:session' => 'session#show', :as => 'session_show'
+  
   get 'bill-papers/bills' => 'bill#index', :as => 'bill_list'
   get 'bill-papers/bills/:bill' => 'bill#show', :as => 'bill_show'
   
