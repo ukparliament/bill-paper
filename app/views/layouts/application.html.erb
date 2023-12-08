@@ -22,6 +22,8 @@
 		<header>
 			<%= content_tag( 'p', link_to( 'Bill papers', home_url ), :class=> 'site-title' ) %>
 			<nav>
+				<%= link_to( 'Sessions', session_list_url ) %>
+				&middot;
 				<%= link_to( 'Bill categories', bill_category_list_url ) %>
 				&middot;
   		  		<%= link_to( 'Bill types', bill_type_list_url ) %>
