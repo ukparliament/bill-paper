@@ -43,7 +43,8 @@ module IMPORT
       session.lords_description = session_item_lords_description
       session.parliament_number = session_item_parliament_number
       session.session_number = session_item_session_number
-      session.save
+      
+      session.save!
     end
   end
 
@@ -270,7 +271,7 @@ module IMPORT
     unless bill
       
       # ... we create a new bill.
-      puts "Creating bill: #{bill_item_short_title} with ID #{bill_item_bill_system_id}"
+      puts "importing bill: #{bill_item_short_title} with ID #{bill_item_bill_system_id}"
       bill = Bill.new
       bill.bill_system_id = bill_item_bill_system_id
       bill.short_title = bill_item_short_title
@@ -330,7 +331,7 @@ module IMPORT
         publication.save
         
         # We log the import.
-        puts "Importing publication: #{publication_item_title}"
+        puts "importing publication: #{publication_item_title}"
         
         # For each link attached to a publication ...
         publication_item['links'].each do |link_item|
