@@ -82,7 +82,7 @@ insert into parliamentary_houses (short_label, label) values( 'Lords', 'House of
 	
 create table publications (
 	id serial not null,
-	title varchar(1000) not null,
+	title varchar(10000) not null,
 	display_date date not null,
 	bill_system_id int not null,
 	parliamentary_house_id int,
@@ -96,8 +96,8 @@ create table publications (
 
 create table links (
 	id serial not null,
-	title varchar(1000) not null,
-	url varchar(1000) not null,
+	title varchar(10000) not null,
+	url varchar(10000) not null,
 	content_length int,
 	source varchar(20) not null,
 	bill_system_id int not null,
