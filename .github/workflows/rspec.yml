@@ -37,7 +37,8 @@ jobs:
       env:
         RAILS_ENV: test
       run: |
-        bundle install --no-deployment --jobs 4 --retry 3
+        bundle config set deployment false
+        bundle install --jobs 4 --retry 3
         cp config/database.github.yml config/database.yml
         bundle exec rails db:setup
     - name: Run tests
