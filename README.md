@@ -1,32 +1,14 @@
 # Bill paper
 
-
 ## Ruby
 
 Install Ruby using your favoured version manager
 Check out repository
 Run bundle
-Create database `rake db:create`
+Create database `rake db:setup`
+Run tests with `rspec`
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Development tips
 
-Things you may want to cover:
+Use Pull requests so that automated smoke test, security checks take place
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

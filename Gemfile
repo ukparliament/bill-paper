@@ -37,4 +37,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "rspec-rails"
+
+  # These two are run by the linter github action
+  gem "brakeman"
+  gem "bundler-audit"
 end
