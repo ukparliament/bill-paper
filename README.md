@@ -1,24 +1,14 @@
-# README
+# Bill paper
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby
 
-Things you may want to cover:
+Install Ruby using your favoured version manager
+Check out repository
+Run bundle
+Create database `rake db:setup`
+Run tests with `rspec`
 
-* Ruby version
+## Development tips
 
-* System dependencies
+Use Pull requests so that automated smoke test, security checks take place
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
