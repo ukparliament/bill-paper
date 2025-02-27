@@ -1,5 +1,7 @@
+require 'open-uri'
+
 # # A module for importing for the bill system API.
-module IMPORT
+module Import
   
   # ## A method to import sessions.
   def import_sessions
