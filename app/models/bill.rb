@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: bills
+#
+#  id                     :integer          not null, primary key
+#  is_act                 :boolean          default(FALSE)
+#  is_defeated            :boolean          default(FALSE)
+#  is_withdrawn           :boolean          default(FALSE)
+#  short_title            :string(255)      not null
+#  updated                :datetime         not null
+#  bill_system_id         :integer          not null
+#  bill_type_id           :integer          not null
+#  current_house_id       :integer
+#  originating_house_id   :integer
+#  originating_session_id :integer          not null
+#
+# Foreign Keys
+#
+#  fk_bill_type            (current_house_id => parliamentary_houses.id)
+#  fk_current_house        (current_house_id => parliamentary_houses.id)
+#  fk_originating_house    (originating_house_id => parliamentary_houses.id)
+#  fk_originating_session  (originating_session_id => sessions.id)
+#
 class Bill < ApplicationRecord
   
   belongs_to :bill_type
