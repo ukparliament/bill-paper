@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: links
+#
+#  id              :integer          not null, primary key
+#  content_length  :integer
+#  source          :string(20)       not null
+#  title           :string(10000)    not null
+#  url             :string(10000)    not null
+#  bill_system_id  :integer          not null
+#  content_type_id :integer          not null
+#  publication_id  :integer          not null
+#
+# Foreign Keys
+#
+#  fk_content_type  (content_type_id => content_types.id)
+#  fk_publication   (publication_id => publications.id)
+#
 class Link < ApplicationRecord
   
   belongs_to :publication

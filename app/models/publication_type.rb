@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: publication_types
+#
+#  id             :integer          not null, primary key
+#  description    :text
+#  label          :string(255)      not null
+#  bill_system_id :integer          not null
+#
 class PublicationType < ApplicationRecord
   
   has_many :publications, -> { order( 'display_date desc' ) }
