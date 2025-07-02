@@ -11,4 +11,8 @@ class MetaController < ApplicationController
   def bookmarklet
     @page_title = 'Bookmarklet'
   end
+  
+  def cookies
+    @page_title = 'Cookies'
+  end
 end

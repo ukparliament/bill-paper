@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   get 'bill-papers/meta' => 'meta#index', :as => 'meta_list'
   get 'bill-papers/meta/schema' => 'meta#schema', :as => 'meta_schema'
   get 'bill-papers/meta/bookmarklet' => 'meta#bookmarklet', :as => 'meta_bookmarklet'
+  get 'bill-papers/meta/cookies' => 'meta#cookies', :as => 'meta_cookies'
 end
