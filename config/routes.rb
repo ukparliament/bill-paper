@@ -1,5 +1,8 @@
+require 'library_design'
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  mount LibraryDesign::Engine => "/library_design"
 
   # Defines the root path route ("/")
   root "home#index"
@@ -24,5 +27,6 @@ Rails.application.routes.draw do
   get 'bill-papers/meta' => 'meta#index', :as => 'meta_list'
   get 'bill-papers/meta/schema' => 'meta#schema', :as => 'meta_schema'
   get 'bill-papers/meta/bookmarklet' => 'meta#bookmarklet', :as => 'meta_bookmarklet'
-  get 'bill-papers/meta/cookies' => 'meta#cookies', :as => 'meta_cookies'
+
+  get 'bill-papers/meta/cookies' => 'meta#cookies', as: :meta_cookies
 end
