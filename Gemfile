@@ -7,7 +7,8 @@ ruby file: '.ruby-version'
 gem "rails", "~> 8"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+gem "propshaft"
+
 gem 'pg'
 
 # Use the Puma web server [https://github.com/puma/puma]
@@ -27,6 +28,14 @@ gem "irb"
 
 # Exception handling
 gem "rollbar"
+
+
+
+# For local development
+# gem "library_design", path: "~/Projects/design-assets/library_design"
+
+# Using repo
+gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
