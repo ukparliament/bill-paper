@@ -1,10 +1,11 @@
 class PublicationTypeController < ApplicationController
-  
   def index
     @publication_types = PublicationType.all.order( 'label' )
     @page_title = 'Publication types'
     @alternate_title = 'Publication types'
     @csv_url = publication_type_list_url( :format => 'csv' )
+
+    @crumb << { label: @page_title, url: nil }
   end
   
   def show
@@ -14,5 +15,8 @@ class PublicationTypeController < ApplicationController
     @alternate_title = @publication_type.label
     @rss_url = publication_type_show_url( :format => 'rss' )
     @csv_url = publication_type_show_url( :format => 'csv' )
+
+    @crumb << { label: 'Publication types', url: publication_type_list_url }
+    @crumb << { label: @page_title, url: nil }
   end
 end
