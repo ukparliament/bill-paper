@@ -6,8 +6,16 @@ ruby file: '.ruby-version'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8"
 
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+# Modern asset management
+gem "propshaft"
+
+# For local development
+# gem "library_design", path: "~/Projects/design-assets/library_design"
+
+# Using repo
+gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.1.3"
+
+# Database adapter
 gem 'pg'
 
 # Use the Puma web server [https://github.com/puma/puma]

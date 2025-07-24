@@ -3,12 +3,8 @@
 	<head>
 		<%= content_tag( 'title', @page_title || 'Bill papers' ) %>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<style>
-			body {font-family: system-ui,sans-serif;padding:0.25rem 0.75rem;font-size:1.2rem;line-height:1.4;max-width:48rem;margin:0.5rem auto;}
-			cite {font-style: normal;}
-			h1, h2 {font-weight:normal;}
-			main {padding:2rem 0;}
-		</style>
+		<%= render 'library_design/library_design_stylesheets' %>
+		<%= stylesheet_link_tag "application" %>
 	
 		<%# Add rel alternate links to RSS and CSV where applicable %>
 		<% if @rss_url -%>
@@ -19,32 +15,18 @@
 		<% end -%>
 	</head>
 	<body>
-		<header>
-			<%= content_tag( 'p', link_to( 'Bill papers', home_url ), :class=> 'site-title' ) %>
-			<nav>
-				<%= link_to( 'Sessions', session_list_url ) %>
-				&middot;
-				<%= link_to( 'Bill categories', bill_category_list_url ) %>
-				&middot;
-  		  		<%= link_to( 'Bill types', bill_type_list_url ) %>
-				&middot;
-				<%= link_to( 'Bills', bill_list_url )%>
-				&middot;
-				<%= link_to( 'Publication types', publication_type_list_url )%>
-			</nav>
-			<%= content_tag( 'h1', @page_title || 'Bill papers' ) %>
-		</header>
-		<%= yield %>
-		<footer>
-			<p>Made available under the <a href='https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/' rel='licence'>Open Parliament Licence</a>.</p>
-			<%= content_tag( 'p', link_to( 'Meta', meta_list_url ) ) %>
-			<p>
-				<a href="https://www.parliament.uk/site-information/accessibility/">Accessibility statement</a>
-				-
-				<%= link_to( 'Cookies', meta_cookies_url )  %>
-				-
-				<a href="https://commonslibrary.parliament.uk/privacy-policy/">Privacy notice</a>
-			</p>
-		</footer>
+		<%= render 'library_design/header/header' do %>
+			<%= link_to( 'Sessions', session_list_url ) %>&middot;
+			<%= link_to( 'Bill categories', bill_category_list_url ) %>&middot;
+		  		<%= link_to( 'Bill types', bill_type_list_url ) %>&middot;
+			<%= link_to( 'Bills', bill_list_url )%>&middot;
+			<%= link_to( 'Publication types', publication_type_list_url )%>
+		<% end %>
+
+		<main class="container block block-page" id="main-content">
+			<%= yield %>
+		</main>
+
+		<%= render 'library_design/footer' %>
 	</body>
 </html>

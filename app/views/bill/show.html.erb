@@ -1,6 +1,6 @@
 <%= content_tag( 'p', link_to( 'Parliament bill page', "https://bills.parliament.uk/bills/#{@bill.bill_system_id}" ) ) %>
 
-<table>
+<table class="table">
 	<tbody>
 		<tr>
 			<%= content_tag( 'th', 'Bill type:' ) %>
@@ -45,7 +45,7 @@
 	<div id="papers">
 		<%= content_tag( 'h2', 'Papers' ) %>
 		<%= content_tag( 'p', "#{link_to( 'RSS', bill_show_url( :bill => @bill.bill_system_id, :format => 'rss' ) )} &middot; #{link_to( 'CSV', bill_show_url( :bill => @bill.bill_system_id, :format => 'csv' ) )}".html_safe ) %>
-		<ul>
+		<ul class="list-group">
 			<%= render :partial => 'link/link', :collection => @bill.links %>
 		</ul>
 	</div>
