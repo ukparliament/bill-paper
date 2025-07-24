@@ -1,7 +1,9 @@
-Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+require 'library_design'
 
-  # Defines the root path route ("/")
+Rails.application.routes.draw do
+  # To load library design partials
+  mount LibraryDesign::Engine => "/library_design"
+
   root "home#index"
   
   get 'bill-papers' => 'home#index', :as => 'home'
