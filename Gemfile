@@ -13,7 +13,7 @@ gem "propshaft"
 # gem "library_design", path: "~/Projects/design-assets/library_design"
 
 # Using repo
-gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.1.4"
+gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.2.3"
 
 # Database adapter
 gem 'pg'
