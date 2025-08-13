@@ -1,30 +1,29 @@
 class MetaController < ApplicationController
   def index
-    @page_title = 'Meta'
-
-    @crumb << { label: 'About this website', url: nil }
+    @page_title = 'About this website'
+    @description = 'About this website.'
+    @crumb << { label: @page_title, url: nil }
   end
   
   def schema
     @page_title = 'Database schema'
-
+    @description = 'Database schema for the bill papers website.'
     @crumb << { label: 'About this website', url: meta_list_url }
     @crumb << { label: @page_title, url: nil }
   end
   
   def bookmarklet
     @page_title = 'Bookmarklet'
-
+    @description = 'Bookmarklet to flip between the UK Parliament bills website and the bill papers application.'
     @crumb << { label: 'About this website', url: meta_list_url }
     @crumb << { label: @page_title, url: nil }
   end
   
   def cookies
     @page_title = 'Cookies'
-
+    @description = 'Cookie policy'
     @crumb << { label: 'About this website', url: meta_list_url }
     @crumb << { label: @page_title, url: nil }
-
     render 'library_design/meta/cookies'
   end
 end

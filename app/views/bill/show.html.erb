@@ -1,52 +1,53 @@
 <%= content_tag( 'p', link_to( 'Parliament bill page', "https://bills.parliament.uk/bills/#{@bill.bill_system_id}" ) ) %>
 
-<table class="table">
+<table class="table key-value">
 	<tbody>
 		<tr>
-			<%= content_tag( 'th', 'Bill type:' ) %>
+			<%= content_tag( 'td', 'Bill type:' ) %>
 			<%= content_tag( 'td', link_to( @bill.bill_type.label, bill_type_show_url( :bill_type => @bill.bill_type.bill_system_id ) ) ) %>
 		</tr>
 		<% if @bill.originating_house -%>
 			<tr>
-				<%= content_tag( 'th', 'Originating House:' ) %>
+				<%= content_tag( 'td', 'Originating House:' ) %>
 				<%= content_tag( 'td', @bill.originating_house.label ) %>
 			</tr>
 		<% end -%>
 		<% if @bill.current_house -%>
 			<tr>
-				<%= content_tag( 'th', 'Current House:' ) %>
+				<%= content_tag( 'td', 'Current House:' ) %>
 				<%= content_tag( 'td', @bill.current_house.label ) %>
 			</tr>
 		<% end -%>
 		<tr>
-			<%= content_tag( 'th', 'Originating session (bill system ID):' ) %>
+			<%= content_tag( 'td', 'Originating session (bill system ID):' ) %>
 			<%= content_tag( 'td', @bill.originating_session_label ) %>
 		</tr>
 		<tr>
-			<%= content_tag( 'th', 'Is Act:' ) %>
+			<%= content_tag( 'td', 'Is Act:' ) %>
 			<%= content_tag( 'td', @bill.is_act ) %>
 		</tr>
 		<tr>
-			<%= content_tag( 'th', 'Is withdrawn:' ) %>
+			<%= content_tag( 'td', 'Is withdrawn:' ) %>
 			<%= content_tag( 'td', @bill.is_withdrawn ) %>
 		</tr>
 		<tr>
-			<%= content_tag( 'th', 'Is defeated:' ) %>
+			<%= content_tag( 'td', 'Is defeated:' ) %>
 			<%= content_tag( 'td', @bill.is_defeated ) %>
 		</tr>
 		<tr>
-			<%= content_tag( 'th', 'Updated:' ) %>
+			<%= content_tag( 'td', 'Updated:' ) %>
 			<%= content_tag( 'td', @bill.updated ) %>
 		</tr>
 	</tbody>
 </table>
 
-<% unless @bill.links.empty? %>
-	<div id="papers">
-		<%= content_tag( 'h2', 'Papers' ) %>
-		<%= content_tag( 'p', "#{link_to( 'RSS', bill_show_url( :bill => @bill.bill_system_id, :format => 'rss' ) )} &middot; #{link_to( 'CSV', bill_show_url( :bill => @bill.bill_system_id, :format => 'csv' ) )}".html_safe ) %>
-		<ul class="list-group">
+<div id="papers">
+	<%= content_tag( 'h2', 'Papers' ) %>
+	<%= list_item_count_sentence( 'paper', @bill.links.size ) %>
+	<%= render :partial => 'library_design/feeds/feeds' %>
+	<% unless @bill.links.empty? %>
+		<ul class="list-group margin-top-20">
 			<%= render :partial => 'link/link', :collection => @bill.links %>
 		</ul>
-	</div>
-<% end -%>
+	<% end -%>
+</div>

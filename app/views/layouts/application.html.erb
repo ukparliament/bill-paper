@@ -1,32 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<%= content_tag( 'title', @page_title || 'Bill papers' ) %>
-		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<%= render 'library_design/library_design_stylesheets' %>
-		<%= stylesheet_link_tag "application" %>
-	
-		<%# Add rel alternate links to RSS and CSV where applicable %>
-		<% if @rss_url -%>
-			<link rel="alternate" type="application/rss+xml" title="UK Parliament Bills - <%= @alternate_title %>" href="<%= @rss_url %>" />
-		<% end -%>
-		<% if @csv_url -%>
-			<link rel="alternate" type="text/csv" title="UK Parliament Bills - <%= @alternate_title %>" href="<%= @csv_url %>" />
-		<% end -%>
+		<%= render :partial => 'library_design/head/head' %>
 	</head>
-	<body>
-		<%= render 'library_design/header/header' do %>
-			<%= link_to( 'Sessions', session_list_url ) %>&middot;
-			<%= link_to( 'Bill categories', bill_category_list_url ) %>&middot;
-		  		<%= link_to( 'Bill types', bill_type_list_url ) %>&middot;
-			<%= link_to( 'Bills', bill_list_url )%>&middot;
-			<%= link_to( 'Publication types', publication_type_list_url )%>
-		<% end %>
-
+	<body class="section-<%= @section %> subsection-<%= @subsection %> brand-bicameral">
+		<%= render :partial => 'layouts/header/header' %>
 		<main class="container block block-page" id="main-content">
+			<%= content_tag( 'h1', @multiline_page_title || @page_title || $SITE_TITLE ) %>
 			<%= yield %>
 		</main>
-
 		<%= render 'library_design/footer' %>
 	</body>
 </html>

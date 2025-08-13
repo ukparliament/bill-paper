@@ -1,4 +1,7 @@
-<%= content_tag( 'p', "#{link_to( 'CSV', publication_type_list_url( :format => 'csv' ) )}".html_safe ) %>
-<ul>
+<%= list_item_count_sentence( 'publication types', @publication_types.size ) %>
+
+<%= render :partial => 'library_design/feeds/feeds' %>
+
+<ul class="margin-top-20">
 	<%= render :partial => 'publication_type', :collection => @publication_types %>
 </ul>

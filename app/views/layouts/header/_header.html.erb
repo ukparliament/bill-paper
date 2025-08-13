@@ -1,0 +1,7 @@
+<%= render 'library_design/header/header' do %>
+	<%= link_to( 'Sessions', session_list_url, :class => 'sessions' ) %>
+	<%= link_to( 'Bill categories', bill_category_list_url, :class => 'categories' ) %>
+  	<%= link_to( 'Bill types', bill_type_list_url, :class => 'types' ) %>
+	<%= link_to( 'Bills', bill_list_url, :class => 'bills' ) %>
+	<%= link_to( 'Publication types', publication_type_list_url, :class => 'publication-types' ) %>
+<% end %>
