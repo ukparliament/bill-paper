@@ -1,6 +1,7 @@
 <%= content_tag( 'p', @bill_type.description.html_safe ) %>
 
 <%= content_tag( 'h2', 'Bills' ) %>
+<%= list_item_count_sentence( 'bill', @bill_type.bills.size ) %>
 <ul>
 	<%= render :partial => 'bill/bill', :collection => @bill_type.bills %>
 </ul>
