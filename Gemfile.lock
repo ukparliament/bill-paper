@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/ukparliament/design-assets.git
-  revision: 5a82b76fb149f1cdc62b15d98d9e4416e6b2afe9
-  tag: 0.2.7
+  revision: 543768efc972b26e04eb6fa362956866ff0b1c47
+  tag: 0.2.21
   glob: library_design/*.gemspec
   specs:
-    library_design (0.2.7)
+    library_design (0.2.17)
       rack-cors (~> 3.0.0)
 
 GEM
@@ -88,7 +88,7 @@ GEM
       activesupport (>= 6.0.0)
     base64 (0.3.0)
     benchmark (0.4.1)
-    bigdecimal (3.2.2)
+    bigdecimal (3.2.3)
     bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
@@ -108,7 +108,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     concurrent-ruby (1.3.5)
-    connection_pool (2.5.3)
+    connection_pool (2.5.4)
     crass (1.0.6)
     date (3.4.1)
     debug (1.11.0)
@@ -144,7 +144,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.25.5)
     msgpack (1.8.0)
-    net-imap (0.5.9)
+    net-imap (0.5.10)
       date
       net-protocol
     net-pop (0.1.2)
@@ -191,7 +191,7 @@ GEM
     puma (7.0.0)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.2.0)
+    rack (3.2.1)
     rack-cors (3.0.0)
       logger
       rack (>= 3.0.14)
@@ -235,10 +235,10 @@ GEM
     rdoc (6.14.2)
       erb
       psych (>= 4.0.0)
-    regexp_parser (2.10.0)
+    regexp_parser (2.11.2)
     reline (0.6.2)
       io-console (~> 0.5)
-    rexml (3.4.1)
+    rexml (3.4.2)
     rollbar (3.6.2)
     rspec-core (3.13.5)
       rspec-support (~> 3.13.0)
@@ -256,8 +256,8 @@ GEM
       rspec-expectations (~> 3.13)
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
-    rspec-support (3.13.4)
-    rubyzip (3.0.1)
+    rspec-support (3.13.5)
+    rubyzip (3.0.2)
     securerandom (0.4.1)
     selenium-webdriver (4.35.0)
       base64 (~> 0.2)
