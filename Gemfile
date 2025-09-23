@@ -10,7 +10,7 @@ gem "rails", "~> 8"
 gem "propshaft"
 
 # For local development
-gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.3.0"
+gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.3.1"
 
 # Database adapter
 gem 'pg'
