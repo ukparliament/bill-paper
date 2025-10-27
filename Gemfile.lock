@@ -137,7 +137,8 @@ GEM
     loofah (2.24.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    mail (2.8.1)
+    mail (2.9.0)
+      logger
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -245,7 +246,7 @@ GEM
       io-console (~> 0.5)
     rexml (3.4.4)
     rollbar (3.6.2)
-    rspec-core (3.13.5)
+    rspec-core (3.13.6)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -315,7 +316,7 @@ DEPENDENCIES
   pg
   propshaft
   puma
-  rails (~> 8)
+  rails (~> 8.1.0)
   rollbar
   rspec-rails
   selenium-webdriver
