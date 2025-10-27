@@ -11,18 +11,10 @@
  
  
  /* Main navigation active states */
-body.section-sessions nav#header-nav a.sessions {
-	border-bottom-color: #fff;
-}
-body.section-categories nav#header-nav a.categories {
-	border-bottom-color: #fff;
-}
-body.section-types nav#header-nav a.types {
-	border-bottom-color: #fff;
-}
-body.section-bills nav#header-nav a.bills {
-	border-bottom-color: #fff;
-}
+body.section-sessions nav#header-nav a.sessions,
+body.section-categories nav#header-nav a.categories,
+body.section-types nav#header-nav a.types,
+body.section-bills nav#header-nav a.bills,
 body.section-publication-types nav#header-nav a.publication-types {
 	border-bottom-color: #fff;
 }
