@@ -5,9 +5,9 @@
 	<%= list_item_count_sentence( 'paper', @publication_type.links.size ) %>
 	<%= render :partial => 'library_design/feeds/feeds' %>
 	<% unless @publication_type.links.empty? %>
-		<ul class="margin-top-20">
+		<ol class="unnumbered">
 			<%= render :partial => 'link/link', :collection => @publication_type.links %>
-		</ul>
+		</ol>
 	<% end -%>
 </div>
 	
