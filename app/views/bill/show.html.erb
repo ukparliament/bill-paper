@@ -46,8 +46,8 @@
 	<%= list_item_count_sentence( 'paper', @bill.links.size ) %>
 	<%= render :partial => 'library_design/feeds/feeds' %>
 	<% unless @bill.links.empty? %>
-		<ul class="list-group margin-top-20">
+		<ol class="list-group">
 			<%= render :partial => 'link/link', :collection => @bill.links %>
-		</ul>
+		</ol>
 	<% end -%>
 </div>

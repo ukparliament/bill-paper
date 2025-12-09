@@ -1,5 +1,5 @@
 <%= content_tag( 'h2', 'Bill types' ) %>
 <%= list_item_count_sentence( 'type', @bill_category.bill_types.size ) %>
-<ul>
+<ol class="unnumbered link-list">
 	<%= render :partial => 'bill_type/bill_type', :collection => @bill_category.bill_types %>
-</ul>
+</ol>
