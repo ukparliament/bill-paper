@@ -3,7 +3,7 @@ class SessionController < ApplicationController
   def index
     @sessions = Session.all.order( 'start_on desc' )
     @page_title = 'Sessions'
-    @descriptions = 'Sessions of the UK Parliament.'
+    @description = 'Sessions of the UK Parliament.'
     @crumb << { :label => 'Sessions', :url => nil }
     @section = 'sessions'
   end
