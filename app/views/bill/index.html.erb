@@ -1,4 +1,5 @@
 <%= list_item_count_sentence( 'bill', @bills.size ) %>
+<%= render :partial => 'library_design/feeds/feeds' %>
 <ol class="unnumbered link-list">
 	<%= render :partial => 'bill', :collection => @bills %>
 </ol>
