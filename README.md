@@ -11,3 +11,4 @@ Run tests with `rspec`
 ## Development tips
 
 Use Pull requests so that automated smoke test, security checks take place
+
