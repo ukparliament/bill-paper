@@ -13,7 +13,7 @@ gem "propshaft"
 gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.6.14"
 
 # Database adapter
-#gem 'pg'
+gem 'pg'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma"
