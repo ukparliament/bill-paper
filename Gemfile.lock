@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/ukparliament/design-assets.git
-  revision: 8204acf7e6525a7681e554fecce663e83242c94d
-  tag: 0.6.10
+  revision: 1638fd2291ea42fe25583a7d1abce9c01c286377
+  tag: 0.6.14
   glob: library_design/*.gemspec
   specs:
-    library_design (0.6.10)
+    library_design (0.6.14)
       rack-cors (~> 3.0.0)
 
 GEM
@@ -147,9 +147,11 @@ GEM
     marcel (1.2.1)
     matrix (0.4.3)
     mini_mime (1.1.5)
-    minitest (5.27.0)
-    msgpack (1.8.7)
-    net-imap (0.6.8)
+    minitest (6.0.6)
+      drb (~> 2.0)
+      prism (~> 1.5)
+    msgpack (1.8.5)
+    net-imap (0.6.7)
       date
       net-protocol
     net-pop (0.1.2)
@@ -321,6 +323,7 @@ DEPENDENCIES
   debug
   irb
   jbuilder
+  json (< 3)
   library_design!
   pg
   propshaft
