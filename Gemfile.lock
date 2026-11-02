@@ -175,13 +175,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.6-x86_64-linux-musl)
       racc (~> 1.4)
-    pg (1.7.0)
-    pg (1.7.0-aarch64-linux)
-    pg (1.7.0-aarch64-linux-musl)
-    pg (1.7.0-arm64-darwin)
-    pg (1.7.0-x86_64-darwin)
-    pg (1.7.0-x86_64-linux)
-    pg (1.7.0-x86_64-linux-musl)
     pp (0.6.4)
       prettyprint
     prettyprint (0.2.1)
@@ -322,7 +315,6 @@ DEPENDENCIES
   irb
   jbuilder
   library_design!
-  pg
   propshaft
   puma
   rails (~> 8.1.1)
@@ -393,13 +385,6 @@ CHECKSUMS
   nokogiri (1.19.6-x86_64-darwin) sha256=8f15f820fa1373d8685ae48cdd8020d923b4104db74d149d1235ddae956469a6
   nokogiri (1.19.6-x86_64-linux-gnu) sha256=ad1e228c3bc873e4f4fc4f845d7e37b4d3648af537acd7b5e8463cce5693065b
   nokogiri (1.19.6-x86_64-linux-musl) sha256=c92b29e897f4ddc19bea67188695aab667f695e74592a5c8741642ecb25d34d9
-  pg (1.7.0) sha256=f7b536501284e883d4c9ef86dbde0313063e4aaafc23575b0017b0d572a26afb
-  pg (1.7.0-aarch64-linux) sha256=101dd3a261000eb64b03ff41a5890674b735b626dbdce88652969b59fb0b1157
-  pg (1.7.0-aarch64-linux-musl) sha256=5ca4d4619a1a39fb22de47350130956ece69cf0512858ee68dca926e46f65e4a
-  pg (1.7.0-arm64-darwin) sha256=9fa895bbe28bdd579b83ccc80464c01d1015ea7549a7919134c9f8f10c060e4b
-  pg (1.7.0-x86_64-darwin) sha256=7b726ba6eab8b143fb803d3b4173b0a3e4b0b032025032212f90d436785022db
-  pg (1.7.0-x86_64-linux) sha256=d0a24f448b3c874c8b2658d4efbbbefce7315c228ede84f6f6f42089d1d704b6
-  pg (1.7.0-x86_64-linux-musl) sha256=0c9bc93b6e0aca2a5b07daef00b7ec4f9882bfe21ef3872b4371f8ecffe1f1e1
   pp (0.6.4) sha256=dfcb0fce700c41456265922884f9fe195d7fbb0674a3578e6c0f69588e82b570
   prettyprint (0.2.1) sha256=d555d57ea6d7cf001d4774b693546a6bd88bec1e778ddffb5c60b68ceec4b7d4
   prism (2.1.0-aarch64-linux-gnu) sha256=808dddc72def68e1a0463689414c97e0ba211938eddbab05387a4844aa2b3ec2
