@@ -239,6 +239,27 @@ module Import
     end
   end
   
+  # ## A method to import publications from bills from the previous session.
+  def import_publications_from_bills_from_previous_session
+    puts "importing publications from bills from the previous session"
+    
+    # We get the previous session.
+    previous_session = Session
+      .order( 'parliament_number desc')
+      .order( 'session_number desc')
+      .second
+      
+    # We get all bills from the previous session.
+    bills = previous_session.bills
+      
+    # For each bill ...
+    bills.each do |bill|
+      
+      # ... we import its publications.
+      import_publications_for_bill( bill )
+    end
+  end
+  
   # ## A method to import a bill we've not seen before.
   def import_bill( bill_item )
     
