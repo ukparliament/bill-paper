@@ -29,7 +29,7 @@ gem "bootsnap", require: false
 
 # Add explicitly for updates
 gem "irb"
-gem "json", "<3"
+gem "json", "<4"
 
 # Exception handling
 gem "rollbar"
